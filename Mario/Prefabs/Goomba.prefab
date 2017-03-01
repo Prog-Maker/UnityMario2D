@@ -242,6 +242,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2.5
   HorizontalOnDefault: -1
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 37376
   playerMask:
     serializedVersion: 2
     m_Bits: 512
