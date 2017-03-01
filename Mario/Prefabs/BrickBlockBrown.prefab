@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61425879016970392}
   - component: {fileID: 114359294478546462}
   - component: {fileID: 50724082695381552}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BrickBlockBrown
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 4620133473077412}
   - component: {fileID: 61441214886054862}
   - component: {fileID: 114243404550020702}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: KickPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1646849856282422}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.676794, y: 6.073, z: 0}
+  m_LocalPosition: {x: -3.0262842, y: -0.20726681, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4620133473077412}
