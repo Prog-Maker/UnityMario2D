@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Koopa : Enemy {
+public class Koopa : Enemy
+{
 
     [SerializeField] private LayerMask damagelayer;
 
@@ -16,6 +17,7 @@ public class Koopa : Enemy {
 
     private bool IsHid = false;
     private bool IsWalk = true;
+    private bool IsHidAndCrazyMove = false;
 
     private void Awake()
     {
@@ -35,18 +37,39 @@ public class Koopa : Enemy {
             _animator.SetBool("IsHid", IsHid);
             _animator.SetBool("IsWalk", IsWalk);
             StartCoroutine(UnHid());
+            return;
+        }
+
+        if (obj.CompareTag("Player") && IsHid && !IsHidAndCrazyMove)
+        {
+            moveController.speed = oldSpeed * 3;
+            IsHidAndCrazyMove = true;
+            return;
+        }
+
+        if (obj.CompareTag("Player") && IsHidAndCrazyMove && IsHid)
+        {
+            moveController.speed = 0;
+            IsHidAndCrazyMove = false;
+            return;
         }
     }
 
     private IEnumerator UnHid()
     {
-        yield return new WaitForSeconds(3f);
+        while (true)
+        {
+            if (!IsHidAndCrazyMove)
+            {
+                yield return new WaitForSeconds(3f);
 
-        IsHid = false;
-        IsWalk = false;
-        _animator.SetBool("IsHid", IsHid);
-        _animator.SetBool("IsWalk", IsWalk);
-        
+                IsHid = false;
+                IsWalk = false;
+                _animator.SetBool("IsHid", IsHid);
+                _animator.SetBool("IsWalk", IsWalk);
+                break;
+            }
+        }
     }
 
     private void GoWalk()
