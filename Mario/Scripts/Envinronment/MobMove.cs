@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class MobMove : MonoBehaviour {
 
@@ -42,8 +44,6 @@ public class MobMove : MonoBehaviour {
     private void Update()
     {
         GroundCheck();
-        RigthCheck();
-        LeftCheck();
         Raycasting();
     }
 
@@ -98,10 +98,10 @@ public class MobMove : MonoBehaviour {
     {
         if (MoveRight)
         {
-            Collider2D[] _colliders = new Collider2D[25];
-            var res = Physics2D.OverlapCircleNonAlloc(rigthCheck.position, 0.12f, _colliders);
+            Collider2D[] _colliders = new Collider2D[5];
+            var res = Physics2D.OverlapCircleNonAlloc(rigthCheck.position, 0.12f, _colliders, collisionMask);
 
-            if (res > 1)
+            if (res >= 1)
             {
                 HorizontalOnDefault *= -1;
                 MoveRight = false;
@@ -114,12 +114,13 @@ public class MobMove : MonoBehaviour {
     {
         if (!MoveRight)
         {
-            // Collider2D[] _colliders = new Collider2D[25];
-            // var res = Physics2D.OverlapCircleNonAlloc(leftCheck.position, 0.12f, _colliders);
-            print(Physics2D.OverlapCircle(leftCheck.position, 0.12f, collisionMask));
+            //List<Collider2D> _colliders = new List<Collider2D>();
+            Collider2D[] _colliders = new Collider2D[5];
+            var res = Physics2D.OverlapCircleNonAlloc(leftCheck.position, 0.12f, _colliders, collisionMask);
+            //print(Physics2D.OverlapCircleAll(leftCheck.position, 0.12f, collisionMask));
 
-            if (Physics2D.OverlapCircle(leftCheck.position, 0.12f, collisionMask))
-            //if (res > 1)
+           // var res = Physics2D.OverlapCircleAll(leftCheck.position, 0.12f, collisionMask);
+            if (res >= 1)
             {
                 HorizontalOnDefault *= -1;
                 MoveRight = true;
@@ -132,6 +133,14 @@ public class MobMove : MonoBehaviour {
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(leftCheck.position, 0.12f);
+        Gizmos.DrawWireSphere(rigthCheck.position, 0.12f);
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        RigthCheck();
+        LeftCheck();
     }
     //private void OnBecameInvisible()
     //{
