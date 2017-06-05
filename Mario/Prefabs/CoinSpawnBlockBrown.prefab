@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4893361215272432}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CoinSpawnPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4092156958154542}
   - component: {fileID: 212047017477665308}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: IsEmpty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4892475749872648}
   - component: {fileID: 212392307313030398}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: IsFull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 61935883821262178}
   - component: {fileID: 50107092349979844}
   - component: {fileID: 114692017271687094}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CoinSpawnBlockBrown
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -192,6 +192,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ebe2de07909df42ad4f80083a46fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletlayerMask:
+    serializedVersion: 2
+    m_Bits: 16384
   CoinOrFungusSpawnPoint: {fileID: 4893361215272432}
   CoinOrFungusPrefab: {fileID: 1763210093378218, guid: f666d43a0dada62408ff18f636661376,
     type: 2}

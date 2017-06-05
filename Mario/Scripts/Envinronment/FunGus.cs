@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Mario.Scripts;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]

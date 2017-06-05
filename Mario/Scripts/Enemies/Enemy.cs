@@ -4,17 +4,17 @@ using UnityEngine;
 namespace MarioWorldForAll
 {
 
-    public class Enemy : BaseMoveMob 
+    public class Enemy : BaseMoveMob
 
     {
         // [SerializeField] private LayerMask layerMask;
         [SerializeField] private LayerMask bulletLayer;
 
         //[SerializeField] private Transform rayCastPoint;
-       //  [SerializeField] private float rayCastHeigth;
+        //  [SerializeField] private float rayCastHeigth;
 
-       // [HideInInspector]
-       // public bool isRayCasting = true;
+        // [HideInInspector]
+        // public bool isRayCasting = true;
 
         //private void Update()
         //{
@@ -40,13 +40,23 @@ namespace MarioWorldForAll
         {
             Destroy(gameObject);
         }*/
-
+        int count = 0;
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.layer == bulletLayer)
+            count += 1;
+
+            if (count == 1)
             {
-                Kill();
+                if (1 << other.gameObject.layer == bulletLayer)
+                {
+                    Destroy(other);
+                    Kill();
+                    count ++;
+                    return;
+                }
             }
+            count = 0;
+
         }
 
         public virtual void Kill()

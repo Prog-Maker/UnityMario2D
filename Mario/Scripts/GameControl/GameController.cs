@@ -29,6 +29,8 @@ public class GameController : MonoBehaviour
     private Transform startPoint;
 
 
+   // private string str = "GameController DURAK";
+
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -55,11 +57,12 @@ public class GameController : MonoBehaviour
         SoundPlayers = GetComponents<AudioSource>();
         SoundPlayers[1].Play();
 
-        
-	}
+        //str = "OK";
+}
 
     private void Update()
     {
+       // Debug.Log(str);
         if (!IsGameOver) return;
         if (IsGameOver) SoundPlayers[0].clip = null;
     }

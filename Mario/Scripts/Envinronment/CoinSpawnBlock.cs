@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CoinSpawnBlock : BlockBase
 {
+    [Header("Layer for Bullet")]
+    [SerializeField] private LayerMask bulletlayerMask;
 
 
     [SerializeField] private Transform CoinOrFungusSpawnPoint;
@@ -20,14 +22,16 @@ public class CoinSpawnBlock : BlockBase
 
     void Awake()
     {
-        IsFull = transform.FindChild("IsFull");
-        IsEmpty = transform.FindChild("IsEmpty");
+        IsFull = transform.Find("IsFull");
+        IsEmpty = transform.Find("IsEmpty");
 
         rbody = GetComponent<Rigidbody2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (1 << collision.gameObject.layer == bulletlayerMask.value) Destroy(collision.gameObject);
+
         if (!ISEmpty)
         {
             if (coinsCount > 0)

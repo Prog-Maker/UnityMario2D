@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4981910799051456}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: GroundChecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,8 +35,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4417073952893948}
   - component: {fileID: 212162935327843996}
-  - component: {fileID: 114021428915234982}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: FunGusPower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,13 +50,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4941412370563558}
+  - component: {fileID: 58112700206135056}
   - component: {fileID: 50515186964793022}
   - component: {fileID: 95494815663182420}
-  - component: {fileID: 61131765939023558}
   - component: {fileID: 114611926157024358}
   - component: {fileID: 114125440230348924}
   - component: {fileID: 114206482952522320}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: FunGusPowerObj
   m_TagString: FunGusPower
   m_Icon: {fileID: 0}
@@ -72,7 +71,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4851986918149942}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: LeftCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +86,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4116355451004564}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: RightCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +139,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1367768159076144}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7407396, y: 4.0477047, z: 0}
+  m_LocalPosition: {x: 2.7202692, y: 3.8159287, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4417073952893948}
@@ -183,8 +182,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &61131765939023558
-BoxCollider2D:
+--- !u!58 &58112700206135056
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -194,9 +193,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0.0050292015, y: 0}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.6982589, y: 1}
+  m_Radius: 0.46655354
 --- !u!95 &95494815663182420
 Animator:
   serializedVersion: 3
@@ -214,17 +213,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114021428915234982
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1314171988223344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dcc512d530422b4abc8d7d37a436bf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114125440230348924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -238,9 +226,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   HorizontalOnDefault: 1
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 244224
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 33280
+  ignorerMask:
+    serializedVersion: 2
+    m_Bits: 0
   groundChecker: {fileID: 0}
   rigthCheck: {fileID: 0}
   leftCheck: {fileID: 0}
+  needRiacast: 0
 --- !u!114 &114206482952522320
 MonoBehaviour:
   m_ObjectHideFlags: 1

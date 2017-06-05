@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Mario.Scripts;
+using UnityEngine;
 
 [RequireComponent(typeof(FunGus))]
 public class FunGusPowerEnter : MonoBehaviour

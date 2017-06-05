@@ -17,11 +17,23 @@ namespace MarioWorldForAll
             move = GetComponent<MobMove>();
 
             _animator = GetComponentInParent<Animator>();
+
         }
 
         public override void OnRayCastEnter()
         {
-           // Debug.Log("RaycastEnter");
+            Die();
+        }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+           // Debug.Log(other.relativeVelocity.magnitude);
+            if (other.relativeVelocity.magnitude > 20) Die();
+        }
+
+
+        void Die()
+        {
             GetComponent<CapsuleCollider2D>().enabled = false;
             GetComponentInChildren<BoxCollider2D>().enabled = false;
             _animator.enabled = false;
@@ -34,22 +46,10 @@ namespace MarioWorldForAll
             Destroy(gameObject, 1.5f);
         }
 
-       //private void OnCollisionEnter2D(Collision2D other)
-       // {
-       //     if (other.gameObject.CompareTag(Tags.Player))
-       //     {
-       //         Debug.Log(other.relativeVelocity.magnitude);
-
-       //         foreach (ContactPoint2D contact in other.contacts)
-       //         {
-       //             print(contact.collider.name + " hit " + contact.otherCollider.name);
-       //             print(" contact.point " + contact.point + "\ncontact.normal" + contact.normal);
-       //         }
-
-       //         CurrentCharacter.character.OnGoombasEnter();
-       //     }
-       // }
-
+        public override void Kill()
+        {
+            Die();
+        }
 
         /*private void OnBecameInvisible()
         {

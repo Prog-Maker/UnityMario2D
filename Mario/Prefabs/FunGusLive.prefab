@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4799709092178790}
   - component: {fileID: 61212235903782652}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: LeftCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 61545250200776022}
   - component: {fileID: 114761721750026600}
   - component: {fileID: 114519092644307832}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: FunGusLive
   m_TagString: FunGusLive
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4320694805942282}
   - component: {fileID: 61130805804843134}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: RightCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4980689794211292}
   - component: {fileID: 212499266375325922}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: FunGusLive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4678182280662290}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: GroundChecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,9 +237,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3.5
   HorizontalOnDefault: 1
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 210944
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 33280
+  ignorerMask:
+    serializedVersion: 2
+    m_Bits: 0
   groundChecker: {fileID: 0}
   rigthCheck: {fileID: 0}
   leftCheck: {fileID: 0}
+  needRiacast: 0
 --- !u!114 &114761721750026600
 MonoBehaviour:
   m_ObjectHideFlags: 1

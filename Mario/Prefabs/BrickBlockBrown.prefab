@@ -146,6 +146,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BreakEffectPrefab: {fileID: 1996100221953168, guid: fd652369143aaf148ad9b03a3c42c9b9,
     type: 2}
+  bulletlayerMask:
+    serializedVersion: 2
+    m_Bits: 16384
 --- !u!212 &212939026482827588
 SpriteRenderer:
   m_ObjectHideFlags: 1

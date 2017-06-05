@@ -14,7 +14,7 @@ public class KoopaFlip : MonoBehaviour {
 
     private Rigidbody2D rbody2d;
 
-    private bool NeedFlip = true;
+    //private bool NeedFlip = true;
 
     private void Awake()
     {

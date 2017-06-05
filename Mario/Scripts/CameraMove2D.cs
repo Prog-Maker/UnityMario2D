@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraMove2D : MonoBehaviour {
@@ -15,6 +14,7 @@ public class CameraMove2D : MonoBehaviour {
         yield return new WaitForSeconds(0.5f);
 
         target = GameController.instance.Character.transform;
+ 
     }
 
 

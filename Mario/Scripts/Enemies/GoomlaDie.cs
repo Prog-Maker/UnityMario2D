@@ -1,4 +1,5 @@
-﻿using MarioWorldForAll;
+﻿using Assets.Mario.Scripts;
+using MarioWorldForAll;
 using System.Collections;
 using UnityEngine;
 
@@ -10,8 +11,6 @@ public class GoomlaDie : MonoBehaviour
 
     private bool Die = false;
 
-    //private Goomla parent;
-
     private void Awake()
     {
         _animator = GetComponentInParent<Animator>();
@@ -22,7 +21,6 @@ public class GoomlaDie : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other)
-    //private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag(Tags.Player))
         {
