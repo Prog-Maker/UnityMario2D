@@ -3,6 +3,9 @@
 public class QuiestionBlock : BlockBase
 {
 
+    [Header("Layer for Bullet")]
+    [SerializeField] private LayerMask bulletlayerMask;
+
     [Header("Fields")]
     [SerializeField] private Transform CoinOrFungusSpawnPoint;
     [SerializeField] private GameObject CoinOrFungusPrefab;
@@ -25,6 +28,8 @@ public class QuiestionBlock : BlockBase
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (1 << collision.gameObject.layer == bulletlayerMask.value) Destroy(collision.gameObject);
+
         if (!IsEmpty)
         {
             MoveBlock(rbody);

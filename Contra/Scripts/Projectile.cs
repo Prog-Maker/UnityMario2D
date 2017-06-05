@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Projectile : MonoBehaviour {
 
@@ -9,10 +8,15 @@ public class Projectile : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         myRigidbody = GetComponent<Rigidbody2D>();
-        myRigidbody.AddRelativeForce(Vector2.up * movespeed, ForceMode2D.Impulse);
+        myRigidbody.AddForce(transform.right * movespeed, ForceMode2D.Impulse);
 	}
 	
 	void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(gameObject);
     }

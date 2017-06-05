@@ -53,16 +53,14 @@ public class PlayerController : MonoBehaviour {
 
 
 
-    void Start ()
-    {
+    void Start () {
         currentProjectile = basicProjectile;
         animators = GetComponentsInChildren<Animator>();
         shootDelayCounter = 0;
         rot = new Quaternion(0,0,0,0);
     }
 	
-	void Update ()
-    {
+	void Update () {
         CalculateBounds();
         onGround = 
             CheckCollision(botLeft, Vector2.down, pixelSize, solid) || 
@@ -99,6 +97,7 @@ public class PlayerController : MonoBehaviour {
     void Move()
     {
 
+
         if (KeyLeft && !obsticleOnLeft)
         {
             hsp = -moveSpeed * Time.deltaTime;
@@ -115,6 +114,7 @@ public class PlayerController : MonoBehaviour {
             moving = false;
             hsp = 0;
         }
+        
 
         // спрыгиваем с платформы
         if (onPlatform && KeyJumpOff)
@@ -152,6 +152,8 @@ public class PlayerController : MonoBehaviour {
             transform.position = new Vector2(transform.position.x, transform.position.y + vsp + pixelSize / 2);
             vsp = 0;
         }
+
+        
 
         // проверяем потолок
         if ((vsp > 0) && (CheckCollision(topLeft, Vector2.up, vsp, solid) || CheckCollision(topRight, Vector2.up, vsp, solid)))
@@ -299,6 +301,7 @@ public class PlayerController : MonoBehaviour {
             animators[i].SetBool("KeyDown", KeyDown);
             animators[i].SetFloat("VSP", vsp);
             animators[i].SetInteger("Direction", direction);
+
         }
     }
 

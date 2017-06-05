@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Mario.Scripts;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -56,8 +57,8 @@ namespace MarioWorldForAll
             _collider = GetComponent<CapsuleCollider2D>();
             _audioPlayer = GetComponent<AudioSource>();
 
-            head = transform.FindChild("Head");
-            groundChecker = transform.FindChild("GroundChecker");
+            head = transform.Find("Head");
+            groundChecker = transform.Find("GroundChecker");
 
             kickPower = 0;
 
@@ -125,7 +126,7 @@ namespace MarioWorldForAll
 
         private void GroundCheck()
         {
-            Collider2D[] _colliders = new Collider2D[25];
+            Collider2D[] _colliders = new Collider2D[5];
             var res = Physics2D.OverlapCircleNonAlloc(groundChecker.position, 0.2f, _colliders);
 
             if (res > 1)

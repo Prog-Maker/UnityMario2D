@@ -6,6 +6,8 @@ public class LowKickBreakBlock : BlockBase
 
     [SerializeField] private GameObject BreakEffectPrefab;
 
+    [SerializeField] private LayerMask bulletlayerMask;
+
     private Rigidbody2D rbody;
 
     private void Awake()
@@ -15,33 +17,54 @@ public class LowKickBreakBlock : BlockBase
 
     public void OnKick(Collider2D other)
     {
-        
+
         if (other.isTrigger)
         {
             //Debug.Log(other.gameObject.name);
 
-            var ch = other.transform.parent.gameObject.GetComponent<CharacterBase>();
-
-            if (ch)
+            try
             {
-                if (ch.kickPower > 0)
+                CharacterBase ch = other.transform.parent.gameObject.GetComponent<CharacterBase>();
+
+                if (ch)
                 {
-                    gameObject.SetActive(false);
-                    GameController.instance.PlaySound("smb_breakblock");
-                    Instantiate(BreakEffectPrefab, transform.position, transform.rotation);
-                    Destroy(gameObject);
-                }
-                else
-                {
-                    GameController.instance.PlaySound("smb_bump");
-                    MoveBlock(rbody); // движение блока вверх вниз пока марио маленький
+                    if (ch.kickPower > 0)
+                    {
+                        gameObject.SetActive(false);
+                        GameController.instance.PlaySound("smb_breakblock");
+                        Instantiate(BreakEffectPrefab, transform.position, transform.rotation);
+                        Destroy(gameObject);
+                    }
+                    else
+                    {
+                        GameController.instance.PlaySound("smb_bump");
+                        MoveBlock(rbody); // движение блока вверх вниз пока марио маленький
+                    }
                 }
             }
+            catch
+            {
+                return;
+            }
+
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (1 << other.gameObject.layer == bulletlayerMask.value)
+        {
+            gameObject.SetActive(false);
+            GameController.instance.PlaySound("smb_breakblock");
+            Instantiate(BreakEffectPrefab, transform.position, transform.rotation);
+            Destroy(gameObject);
+            Destroy(other.gameObject);
         }
     }
 
 
-    
+
     //private IEnumerator Move()
     //{
     //    bool up = true;
