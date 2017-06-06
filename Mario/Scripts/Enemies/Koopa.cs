@@ -16,7 +16,7 @@ public class Koopa : Enemy
 
     [SerializeField] GameObject damagepoint;
 
-    private MobMove moveController;
+    private MoveForward moveController;
 
     private float oldSpeed;
 
@@ -25,8 +25,18 @@ public class Koopa : Enemy
 
     private Rigidbody2D rbOther;
 
+    /// <summary>
+    /// Спрятался
+    /// </summary>
     private bool IsHid = false;
+
+    /// <summary>
+    /// Ходит
+    /// </summary>
     private bool IsWalk = true;
+    /// <summary>
+    /// Спрятался и быстро ездит
+    /// </summary>
     private bool IsHidAndCrazyMove = false;
 
     private void Awake()
@@ -34,7 +44,7 @@ public class Koopa : Enemy
         _animator = GetComponent<Animator>();
         rbody2d = GetComponent<Rigidbody2D>();
 
-        moveController = GetComponent<MobMove>();
+        moveController = GetComponent<MoveForward>();
     }
 
     private void Start()
@@ -42,12 +52,6 @@ public class Koopa : Enemy
         oldSpeed = moveController.speed;
     }
 
-    //private void Update()
-    //{
-    //    print(string.Format("IsHid = {0}\nIsWalk = {1}", IsHid, IsWalk));
-    //    Debug.Log("nIsHidAndCrazyMove = " + IsHidAndCrazyMove);
-    //    Debug.Log(moveController.MoveRight);
-    //}
 
     public void OnKickUp(GameObject obj)
     {
@@ -113,15 +117,13 @@ public class Koopa : Enemy
 
         if (other.gameObject.CompareTag("Player"))
         {
-            bool rigth = moveController.RigthCheck();
-            bool left = moveController.LeftCheck();
 
-            if (IsHid && !IsHidAndCrazyMove && (rigth || left))
+            if (IsHid && !IsHidAndCrazyMove)
             {
                 StopCoroutine(UnHid());
 
-                if (rigth) rbody2d.AddForce(new Vector2(-1 * moveController.speed *10, 0), ForceMode2D.Force); //moveController.HorizontalOnDefault = -1;
-                if (left)  rbody2d.AddForce(new Vector2(1 * moveController.speed *10, 0), ForceMode2D.Force);
+                //if (rigth) rbody2d.AddForce(new Vector2(-1 * moveController.speed *10, 0), ForceMode2D.Force);
+               // if (left)  rbody2d.AddForce(new Vector2(1 * moveController.speed *10, 0), ForceMode2D.Force);
 
                 moveController.speed = oldSpeed * 10;
                 IsHidAndCrazyMove = true;

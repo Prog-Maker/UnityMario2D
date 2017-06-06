@@ -17,7 +17,6 @@ namespace MarioWorldForAll
             move = GetComponent<MobMove>();
 
             _animator = GetComponentInParent<Animator>();
-
         }
 
         public override void OnRayCastEnter()

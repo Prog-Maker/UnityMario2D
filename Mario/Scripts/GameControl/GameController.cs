@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour
         //CurrentCharacter.character = characters[0];
         startPoint = newlyLoadedScene.GetRootGameObjects().Where(x => x.name == "StartPoint").FirstOrDefault().transform;
 
-        var character = Instantiate(characters[0], startPoint.position, startPoint.rotation);
+        var character = Instantiate(characters[1], startPoint.position, startPoint.rotation);
 
         Character = character;
         SoundPlayers = GetComponents<AudioSource>();

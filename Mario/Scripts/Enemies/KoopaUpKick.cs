@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class KoopaUpKick : MonoBehaviour {
-
 
     private Koopa parent;
 
@@ -18,5 +14,4 @@ public class KoopaUpKick : MonoBehaviour {
         parent.OnKickUp(collision.gameObject);
     }
 
-   
 }
