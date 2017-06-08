@@ -20,7 +20,7 @@ public class FunGus : MonoBehaviour
     void Start()
     {
         IsSpawn = false;
-        GameController.instance.PlaySound("smb_vine");
+        //GameController.instance.PlaySound("smb_vine");
         StartCoroutine(SpawnStart());
     }
 
