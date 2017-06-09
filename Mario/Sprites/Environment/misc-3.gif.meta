@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a7a06de7afb941640bf82b72ee73f5bb
-timeCreated: 1496897758
+timeCreated: 1496919995
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -117,8 +117,8 @@ TextureImporter:
     21300220: misc-3_110
     21300222: misc-3_111
     21300224: misc-3_112
-    21300226: misc-3_113
-    21300228: misc-3_114
+    21300226: LiitleCastleBrown
+    21300228: LiitleCastleGrey
     21300230: misc-3_115
     21300232: misc-3_116
     21300234: misc-3_117
@@ -152,7 +152,7 @@ TextureImporter:
     21300290: misc-3_145
     21300292: misc-3_146
     21300294: misc-3_147
-    21300296: misc-3_148
+    21300296: BigCastleGrey
     21300298: misc-3_149
     21300300: misc-3_150
     21300302: misc-3_151
@@ -209,7 +209,7 @@ TextureImporter:
     21300404: misc-3_202
     21300406: misc-3_203
     21300408: misc-3_204
-    21300410: misc-3_205
+    21300410: BigCastleBrown
     21300412: misc-3_206
     21300414: misc-3_207
     21300416: misc-3_208
@@ -2055,7 +2055,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: misc-3_113
+      name: LiitleCastleBrown
       rect:
         serializedVersion: 2
         x: 272
@@ -2068,7 +2068,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: misc-3_114
+      name: LiitleCastleGrey
       rect:
         serializedVersion: 2
         x: 360
@@ -2445,7 +2445,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: misc-3_148
+      name: BigCastleGrey
       rect:
         serializedVersion: 2
         x: 393
@@ -3121,7 +3121,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: misc-3_205
+      name: BigCastleBrown
       rect:
         serializedVersion: 2
         x: 393

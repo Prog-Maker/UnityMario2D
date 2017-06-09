@@ -16,7 +16,7 @@ public class QuiestionBlock : BlockBase
 
 
     [Header("FOR TEST!! TRUE IS DEFAULT")]
-    [SerializeField] bool EditroFieldIsEmpty = true;
+    [SerializeField] bool EditorFieldIsEmpty = true;
 
     private bool IsEmpty = false;
 
@@ -34,7 +34,7 @@ public class QuiestionBlock : BlockBase
         {
             MoveBlock(rbody);
 
-            IsEmpty = EditroFieldIsEmpty;
+            IsEmpty = EditorFieldIsEmpty;
 
             _animator.SetBool("IsEmpty", IsEmpty);
 
