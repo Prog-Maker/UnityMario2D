@@ -14,6 +14,9 @@ public class TileMapEditor : Editor
     int sortingOrder = 0;
     LayerMask layerName;
 
+    Object TilePrebab;
+    bool needTilePrefab = true;
+
     bool mouseOnMap
     {
         get { return mouseHitPos.x > 0 && mouseHitPos.x < map.gridSize.x && mouseHitPos.y < 0 && mouseHitPos.y > -map.gridSize.y; }
@@ -52,9 +55,17 @@ public class TileMapEditor : Editor
             EditorGUILayout.LabelField ("Grid Size In Units:", map.gridSize.x + "x" + map.gridSize.y);
             EditorGUILayout.LabelField ("Pixels To Units:", map.pixelsToUnits.ToString ());
 
+            needTilePrefab = EditorGUILayout.Toggle ("NeedTilePrefab", needTilePrefab);
             needCollider = EditorGUILayout.Toggle ("Need Collider", needCollider);
             sortingOrder = EditorGUILayout.IntField ("Order In Layer", sortingOrder);
             layerName = EditorGUILayout.LayerField ("Layer Mask", layerName);
+
+
+
+            if (needTilePrefab)
+            {
+                TilePrebab = EditorGUILayout.ObjectField (TilePrebab, typeof (Object), false);
+            }
 
             UpdateBrush (map.currentTileBrush);
 
@@ -135,8 +146,16 @@ public class TileMapEditor : Editor
 
     void CreateBrush ()
     {
-
-        var sprite = map.currentTileBrush;
+        Sprite sprite;
+        if (needTilePrefab && TilePrebab != null)
+        {
+            sprite = ((GameObject)TilePrebab).GetComponent<SpriteRenderer>().sprite;
+        }
+        else
+        {
+            sprite = map.currentTileBrush;
+        }
+        
         if (sprite != null)
         {
             GameObject go = new GameObject("Brush");
@@ -218,30 +237,49 @@ public class TileMapEditor : Editor
 
         GameObject tile = GameObject.Find (map.name + "/Tiles/tile_" + id);
 
-        if (tile == null)
+        if (!needTilePrefab)
         {
-            tile = new GameObject ("tile_" + id);
-            tile.transform.SetParent (map.tiles.transform);
-            tile.transform.position = new Vector3 (posX, posY, 0);
-            tile.AddComponent<SpriteRenderer> ();
-
-            if (needCollider)
+            if (tile == null)
             {
-                tile.AddComponent<BoxCollider2D> ();
+                tile = new GameObject ("tile_" + id);
+                tile.transform.SetParent (map.tiles.transform);
+                tile.transform.position = new Vector3 (posX, posY, 0);
+                tile.AddComponent<SpriteRenderer> ();
+
+                if (needCollider)
+                {
+                    tile.AddComponent<BoxCollider2D> ();
+                }
             }
+
+            var renderer = tile.GetComponent<SpriteRenderer> ();
+            renderer.sprite = brush.renderer2D.sprite;
+            renderer.sortingOrder = sortingOrder;
+
+            var collider = tile.GetComponent<BoxCollider2D>();
+            if (collider)
+            {
+                collider.size = renderer.bounds.size;
+            }
+
+            tile.layer = layerName;
         }
-
-        var renderer = tile.GetComponent<SpriteRenderer> ();
-        renderer.sprite = brush.renderer2D.sprite;
-        renderer.sortingOrder = sortingOrder;
-
-        var collider = tile.GetComponent<BoxCollider2D>();
-        if (collider)
+        else
         {
-            collider.size = renderer.bounds.size;
+            if (tile == null)
+            {
+                tile = (GameObject) PrefabUtility.InstantiatePrefab(TilePrebab);
+                tile.name = "tile_" + id;
+                tile.transform.SetParent (map.tiles.transform);
+                tile.transform.position = new Vector3 (posX, posY, 0);
+            }
+
+            var renderer = tile.GetComponent<SpriteRenderer> ();
+            UpdateBrush (renderer.sprite);
         }
 
-        tile.layer = layerName;
+
+        
     }
 
     void RemoveTile ()
