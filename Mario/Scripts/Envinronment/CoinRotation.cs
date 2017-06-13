@@ -7,7 +7,7 @@ public class CoinRotation : MonoBehaviour {
 
     private Rigidbody2D rbody;
 
-    public float FlySpeed = 1.5f;
+    public float FlySpeed = 10.5f;
 
     void Start()
     {
@@ -18,7 +18,7 @@ public class CoinRotation : MonoBehaviour {
 
     private void Move()
     {
-        GameController.instance.PlaySound("smb_coin");
+       // GameController.instance.PlaySound("smb_coin");
         rbody.velocity = new Vector2(rbody.velocity.x, rbody.velocity.y + FlySpeed);
     }
 
