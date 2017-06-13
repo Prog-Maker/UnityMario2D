@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 849120ad2cf895f43807a182d2a8b9c3
-timeCreated: 1496995975
+timeCreated: 1497351221
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -22,7 +22,7 @@ TextureImporter:
     21300030: Sprite-Sheet-Mario-World-2_15
     21300032: Sprite-Sheet-Mario-World-2_16
     21300034: Sprite-Sheet-Mario-World-2_17
-    21300036: Sprite-Sheet-Mario-World-2_18
+    21300036: EmptyBlockBrown
     21300038: Sprite-Sheet-Mario-World-2_19
     21300040: Sprite-Sheet-Mario-World-2_20
     21300042: Sprite-Sheet-Mario-World-2_21
@@ -360,7 +360,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Sprite-Sheet-Mario-World-2_18
+      name: EmptyBlockBrown
       rect:
         serializedVersion: 2
         x: 360
