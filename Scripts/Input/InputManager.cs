@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public enum Buttons
 {
@@ -29,7 +30,7 @@ public class InputAxisState
 
 		get
         {
-			var val = Input.GetAxis(axisName);
+			var val = CrossPlatformInputManager.GetAxis(axisName);
 
 			switch(condition)
             {
