@@ -13,6 +13,7 @@ public class TileMapEditor : Editor
     bool needCollider = true;
     int sortingOrder = 0;
     LayerMask layerName;
+    string tag = "";
 
     Object TilePrebab;
     bool needTilePrefab = true;
@@ -59,7 +60,7 @@ public class TileMapEditor : Editor
             needCollider = EditorGUILayout.Toggle ("Need Collider", needCollider);
             sortingOrder = EditorGUILayout.IntField ("Order In Layer", sortingOrder);
             layerName = EditorGUILayout.LayerField ("Layer Mask", layerName);
-
+            tag = EditorGUILayout.TagField ("Add Tag", tag);
 
 
             if (needTilePrefab)
@@ -263,6 +264,7 @@ public class TileMapEditor : Editor
             }
 
             tile.layer = layerName;
+            tile.tag = tag;
         }
         else
         {
@@ -302,5 +304,10 @@ public class TileMapEditor : Editor
             DestroyImmediate (t.gameObject);
             i--;
         }
+    }
+
+    void GetTags ()
+    {
+        
     }
 }
