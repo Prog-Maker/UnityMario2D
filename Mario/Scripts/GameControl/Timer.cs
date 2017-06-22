@@ -21,6 +21,7 @@ public class Timer : MonoBehaviour {
 	
 	void UpdateTime ()
     {
+        if (textBlock)
         textBlock.text = (TimeLeft--).ToString();
 	}
 }

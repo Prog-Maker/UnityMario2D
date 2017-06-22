@@ -7,12 +7,15 @@ public class CoinRotation : MonoBehaviour {
 
     private Rigidbody2D rbody;
 
-    public float FlySpeed = 10.5f;
+    public float FlySpeed = 100.5f;
+
+    private void Awake ()
+    {
+        rbody = GetComponent<Rigidbody2D>();
+    }
 
     void Start()
     {
-        rbody = GetComponent<Rigidbody2D>();
-        
         Move();
 	}
 
@@ -24,7 +27,7 @@ public class CoinRotation : MonoBehaviour {
 
     void Update ()
     {
-        if (rbody.velocity.y < -17)
+        if (rbody.velocity.y < -50)
         {
             Destroy(gameObject);
         }

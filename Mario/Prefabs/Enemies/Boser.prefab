@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114728977734537994}
   - component: {fileID: 114339574100571742}
   - component: {fileID: 114855814633866292}
+  - component: {fileID: 114980303999404678}
   m_Layer: 9
   m_Name: Boser
   m_TagString: Untagged
@@ -232,7 +233,7 @@ MonoBehaviour:
   needsCollision: 1
   layer:
     serializedVersion: 2
-    m_Bits: 80640
+    m_Bits: 81664
   maxDistance: 1000
   currnetDistance: 200
   moveDistance: 0
@@ -263,6 +264,22 @@ MonoBehaviour:
   projectilePrefab: {fileID: 1450762778753400, guid: f9896ac4587589d42922dd4dbb1a627c,
     type: 2}
   shootPos: {fileID: 4078272583288250}
+--- !u!114 &114980303999404678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1225185942593562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e843919323d85445b4ce8f91946cf11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  Health: 5
+  damage: 0.5
 --- !u!212 &212078591782373112
 SpriteRenderer:
   m_ObjectHideFlags: 1

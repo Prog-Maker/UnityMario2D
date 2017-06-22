@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace MarioWorldForAll
 {
@@ -7,47 +8,66 @@ namespace MarioWorldForAll
 
         [SerializeField] private float powerImpulse;
 
-        private Rigidbody2D rbody2d;
-        private MobMove move;
-        private Animator _animator;
+        //public override void OnRayCastEnter()
+        //{
+        //    Die();
+        //}
+        bool die = false;
 
-        void Awake()
+        private void Update ()
         {
-            rbody2d = GetComponent<Rigidbody2D>();
-            move = GetComponent<MobMove>();
-
-            _animator = GetComponentInParent<Animator>();
-        }
-
-        public override void OnRayCastEnter()
-        {
-            Die();
-        }
-
-        private void OnCollisionEnter2D(Collision2D other)
-        {
-           // Debug.Log(other.relativeVelocity.magnitude);
-            if (other.relativeVelocity.magnitude > 20) Die();
+            if (rbody2d.velocity.y > 60 && !die) { Die (); }
         }
 
 
-        void Die()
+        private void OnCollisionEnter2D (Collision2D other)
         {
-            GetComponent<CapsuleCollider2D>().enabled = false;
-            GetComponentInChildren<BoxCollider2D>().enabled = false;
-            _animator.enabled = false;
+            // Debug.Log(other.relativeVelocity.magnitude);
+            //if (other.relativeVelocity.magnitude > 20) Die ();
+
+            if (other.collider.tag == "Player")
+            {
+                foreach (ContactPoint2D point in other.contacts)
+                {
+
+                    print (point.normal);
+                    if (point.normal.y < 0.3)
+                    {
+                        print ("Coll in Top");
+                    }
+                    else if ((point.normal.y > 0.3))
+                    {
+                        print ("Coll in Bottom");
+                    }
+                    else
+                    {
+                        print ("Coll in side");
+                    }
+                }
+            }
+        }
+
+
+        private void Die ()
+        {
+            die = true;
+            transform.SetLocalScaleY (-transform.localScale.y);
+            GetComponent<Collider2D> ().enabled = false;
+
+            _anim.enabled = false;
+
             rbody2d.constraints = RigidbodyConstraints2D.None;
-            transform.rotation = Quaternion.Euler(0, 0, 180);
-            rbody2d.AddForce(new Vector2(0, 1 * powerImpulse), ForceMode2D.Impulse);
-            GameController.instance.PlaySound("smb_stomp");
-            move.enabled = false;
-            rbody2d.gravityScale = 3;
-            Destroy(gameObject, 1.5f);
+
+            rbody2d.AddForce (new Vector2 (0, 1 * powerImpulse), ForceMode2D.Impulse);
+            //GameController.instance.PlaySound("smb_stomp");
+
+            rbody2d.gravityScale = 15;
+            Destroy (gameObject, 1.5f);
         }
 
-        public override void Kill()
+        public override void Kill ()
         {
-            Die();
+            Die ();
         }
 
         /*private void OnBecameInvisible()

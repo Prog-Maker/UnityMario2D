@@ -21,6 +21,11 @@ namespace MarioWorldForAll
             Debug.Log("I am GoomBasEnter");
         }
 
+        public virtual void OnEnemyEnter ()
+        {
+            Debug.Log ("I am Enemy Enter");
+        }
+
         public virtual void OnKoopasEnter()
         {
             Debug.Log("I am KoopasEnter");

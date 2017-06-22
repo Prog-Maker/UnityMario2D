@@ -24,9 +24,9 @@ GameObject:
   - component: {fileID: 66129774740503998}
   - component: {fileID: 61622846918842184}
   - component: {fileID: 61568068143534298}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: TubeSmallGreen
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -20,8 +20,8 @@ public class Koopa : Enemy
 
     private float oldSpeed;
 
-    private Animator _animator;
-    private Rigidbody2D rbody2d;
+    //private Animator _animator;
+    //private Rigidbody2D rbody2d;
 
     private Rigidbody2D rbOther;
 
@@ -39,10 +39,9 @@ public class Koopa : Enemy
     /// </summary>
     private bool IsHidAndCrazyMove = false;
 
-    private void Awake()
+    protected override void Awake()
     {
-        _animator = GetComponent<Animator>();
-        rbody2d = GetComponent<Rigidbody2D>();
+        base.Awake ();
 
         moveController = GetComponent<MoveForward>();
     }
@@ -67,8 +66,8 @@ public class Koopa : Enemy
                 moveController.speed = 0;
                 IsHid = true;
                 IsWalk = false;
-                _animator.SetBool("IsHid", IsHid);
-                _animator.SetBool("IsWalk", IsWalk);
+                _anim.SetBool("IsHid", IsHid);
+                _anim.SetBool("IsWalk", IsWalk);
                 StartCoroutine(UnHid());
                 return;
             }
@@ -100,15 +99,15 @@ public class Koopa : Enemy
         {
             IsHid = false;
             IsWalk = false;
-            _animator.SetBool("IsHid", IsHid);
-            _animator.SetBool("IsWalk", IsWalk);
+            _anim.SetBool("IsHid", IsHid);
+            _anim.SetBool("IsWalk", IsWalk);
         }
     }
 
     private void GoWalk()
     {
         IsWalk = true;
-        _animator.SetBool("IsWalk", IsWalk);
+        _anim.SetBool("IsWalk", IsWalk);
         moveController.speed = oldSpeed;
     }
 
@@ -141,17 +140,17 @@ public class Koopa : Enemy
    private IEnumerator Die()
     {
         Destroy(damagepoint);
-        _animator.SetBool("IsHid", true);
-        _animator.SetBool("IsWalk", false);
+        _anim.SetBool("IsHid", true);
+        _anim.SetBool("IsWalk", false);
 
         yield return new WaitForSeconds(0.04f);
 
         GetComponent<CircleCollider2D>().enabled = false;
-        _animator.enabled = false;
+        _anim.enabled = false;
         rbody2d.constraints = RigidbodyConstraints2D.None;
         transform.rotation = Quaternion.Euler(0, 0, 180);
         rbody2d.AddForce(new Vector2(0, 1 * powerImpulse), ForceMode2D.Impulse);
-        GameController.instance.PlaySound("smb_stomp");
+        //GameController.instance.PlaySound("smb_stomp");
         moveController.enabled = false;
         rbody2d.gravityScale *= 3;
         Destroy(gameObject, 4.5f);

@@ -4,42 +4,20 @@ using UnityEngine;
 namespace MarioWorldForAll
 {
 
-    public class Enemy : BaseMoveMob
-
+    public class Enemy : MonoBehaviour
     {
-        // [SerializeField] private LayerMask layerMask;
         [SerializeField] private LayerMask bulletLayer;
 
-        //[SerializeField] private Transform rayCastPoint;
-        //  [SerializeField] private float rayCastHeigth;
+        protected Animator _anim;
+        protected Rigidbody2D rbody2d;
 
-        // [HideInInspector]
-        // public bool isRayCasting = true;
-
-        //private void Update()
-        //{
-        //    Raycasting();
-        //}
-
-        //private void Raycasting()
-        //{
-        //    if (isRayCasting)
-        //    {
-        //        RaycastHit2D hit = Physics2D.Raycast(rayCastPoint.position, Vector2.down, rayCastHeigth, layerMask);
-        //        Debug.DrawLine(rayCastPoint.position, new Vector2(rayCastPoint.position.x, rayCastPoint.position.y - rayCastHeigth), Color.green);
-
-        //        if (hit.collider != null)
-        //        {
-        //            DestroyOnDown();
-        //            isRayCasting = false;
-        //        }
-        //    }
-        //}
-
-        /*public ov void RayCastHit()
+        protected virtual void Awake ()
         {
-            Destroy(gameObject);
-        }*/
+            _anim = GetComponent<Animator> ();
+            rbody2d = GetComponent<Rigidbody2D> ();
+        }
+
+
         int count = 0;
         private void OnTriggerEnter2D(Collider2D other)
         {

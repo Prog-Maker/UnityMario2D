@@ -228,7 +228,7 @@ namespace MarioWorldForAll
 
             Destroy(gameObject, 1f);
 
-            Restarter.instance.ReStart(0);
+            //Restarter.instance.ReStart(0);
         }
 
         private IEnumerator ToSmall()

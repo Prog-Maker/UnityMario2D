@@ -31,7 +31,7 @@ public class QuiestionBlock : BlockBase
 
     private void OnTriggerEnter2D (Collider2D collision)
     {
-        if (CoinsCount > 0)
+        if (CoinsCount > 0 && collision.gameObject.CompareTag("Player"))
         {
             CoinsCount--;
 

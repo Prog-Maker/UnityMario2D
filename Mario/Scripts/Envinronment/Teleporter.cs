@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Teleporter : MonoBehaviour
+public class Teleporter : ActivationBehavior
 {
     public Transform teleportPoint, endPoint;
 
@@ -31,7 +31,16 @@ public class Teleporter : MonoBehaviour
     private void OnTriggerStay2D (Collider2D other)
     {
 
-        if (other.gameObject.CompareTag ("Player") && Input.GetAxis ("Vertical") < 0 && !onTeleport)
+        if (other.gameObject.CompareTag ("Player"))
+        {
+            var stateBehavior = GetComponent<ActivateState>();
+            if (stateBehavior)
+            {
+                stateBehavior.behaviorToActivate = this;
+            }
+        }
+
+        if (isActivated && !onTeleport)
         {
             scripts = new List<MonoBehaviour> ();
 
@@ -69,7 +78,6 @@ public class Teleporter : MonoBehaviour
             onTeleport = true;
 
         }
-
 
     }
 

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a7a06de7afb941640bf82b72ee73f5bb
-timeCreated: 1496919995
+timeCreated: 1497520305
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -417,19 +417,19 @@ TextureImporter:
     21300820: misc-3_410
     21300822: misc-3_411
     21300824: misc-3_412
-    21300826: misc-3_413
-    21300828: misc-3_414
-    21300830: misc-3_415
-    21300832: misc-3_416
-    21300834: misc-3_417
-    21300836: misc-3_418
+    21300826: FireBall-0
+    21300828: FireBall-1
+    21300830: FireBall-2
+    21300832: FireBall-3
+    21300834: FireBallDamage-1
+    21300836: FireBallDamage-2
     21300838: misc-3_419
     21300840: misc-3_420
     21300842: misc-3_421
     21300844: misc-3_422
     21300846: misc-3_423
     21300848: misc-3_424
-    21300850: misc-3_425
+    21300850: FireBallDamage-0
     21300852: misc-3_426
     21300854: misc-3_427
     21300856: misc-3_428
@@ -654,8 +654,8 @@ TextureImporter:
       name: misc-3_4
       rect:
         serializedVersion: 2
-        x: 52
-        y: 1193
+        x: 270
+        y: 1053
         width: 16
         height: 16
       alignment: 0
@@ -5032,7 +5032,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: misc-3_413
+      name: FireBall-0
       rect:
         serializedVersion: 2
         x: 313
@@ -5045,7 +5045,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: misc-3_414
+      name: FireBall-1
       rect:
         serializedVersion: 2
         x: 324
@@ -5058,7 +5058,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: misc-3_415
+      name: FireBall-2
       rect:
         serializedVersion: 2
         x: 336
@@ -5071,7 +5071,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: misc-3_416
+      name: FireBall-3
       rect:
         serializedVersion: 2
         x: 348
@@ -5084,7 +5084,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: misc-3_417
+      name: FireBallDamage-1
       rect:
         serializedVersion: 2
         x: 372
@@ -5097,7 +5097,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: misc-3_418
+      name: FireBallDamage-2
       rect:
         serializedVersion: 2
         x: 388
@@ -5175,7 +5175,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: misc-3_425
+      name: FireBallDamage-0
       rect:
         serializedVersion: 2
         x: 360

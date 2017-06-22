@@ -38,7 +38,7 @@ public class GameController : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        if (Restarter.instance == null) Instantiate(reStarter);
+        //if (Restarter.instance == null) Instantiate(reStarter);
     }
 
     void Start ()
@@ -49,11 +49,11 @@ public class GameController : MonoBehaviour
         SceneManager.SetActiveScene(newlyLoadedScene);
 
         //CurrentCharacter.character = characters[0];
-        startPoint = newlyLoadedScene.GetRootGameObjects().Where(x => x.name == "StartPoint").FirstOrDefault().transform;
+      //  startPoint = newlyLoadedScene.GetRootGameObjects().Where(x => x.name == "StartPoint").FirstOrDefault().transform;
 
-        var character = Instantiate(characters[1], startPoint.position, startPoint.rotation);
+        //var character = Instantiate(characters[1], startPoint.position, startPoint.rotation);
 
-        Character = character;
+        //Character = character;
         SoundPlayers = GetComponents<AudioSource>();
         SoundPlayers[1].Play();
 

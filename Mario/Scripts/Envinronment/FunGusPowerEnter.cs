@@ -1,4 +1,5 @@
 ﻿using Assets.Mario.Scripts;
+using MarioWorldForAll;
 using UnityEngine;
 
 //[RequireComponent(typeof(FunGus))]
@@ -9,8 +10,10 @@ public class FunGusPowerEnter : Collectable
 
     override protected void OnCollect (GameObject target)
     {
-        var changStateBevavior = target.GetComponent<ChangeState>();
-        changStateBevavior.changeState (true);
+        var changeStateBevavior = target.GetComponent<ChangeState>();
+        var character = target.GetComponent<CharacterBase>();
+        changeStateBevavior.changeState (true);
+        character.OnFungusPowerEnter ();
         
         //var equipBehavior = target.GetComponent<Equip> ();
         //if (equipBehavior != null)

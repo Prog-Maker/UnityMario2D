@@ -381,7 +381,7 @@ MonoBehaviour:
   needsCollision: 1
   layer:
     serializedVersion: 2
-    m_Bits: 80640
+    m_Bits: 81664
 --- !u!114 &114329693289975882
 MonoBehaviour:
   m_ObjectHideFlags: 1
